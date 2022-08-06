@@ -63,17 +63,15 @@ public class CPersona {
     @PutMapping("/update/{id}")
     public ResponseEntity<?> update(@PathVariable("id") int id, @RequestBody dtoPersona dtopers) {
         //validamos ID
-        if (!sPersona.existsById(id)) {
+        if (!sPersona.existsById(id))
             return new ResponseEntity(new Mensaje("El ID no existe!"), HttpStatus.BAD_REQUEST);
-        }
         //compara nombres de experiencias
-        if (sPersona.existsByNombreP(dtopers.getNombreP()) && sPersona.getByNombreP(dtopers.getNombreP()).get().getId() != id) {
+        if (sPersona.existsByNombreP(dtopers.getNombreP()) && sPersona.getByNombreP(dtopers.getNombreP()).get().getId() != id)
             return new ResponseEntity(new Mensaje("Esa Persona ya existe!"), HttpStatus.BAD_REQUEST);
-        }
         // no puede estar vacio
-        if (StringUtils.isBlank(dtopers.getNombreP())) {
+        if (StringUtils.isBlank(dtopers.getNombreP()))
             return new ResponseEntity(new Mensaje("El nombre es obligatorio!"), HttpStatus.BAD_REQUEST);
-        }
+        
 
         Persona persona = sPersona.getOne(id).get();
         persona.setNombreP(dtopers.getNombreP());
