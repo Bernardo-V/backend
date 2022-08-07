@@ -68,7 +68,7 @@ public class CPersona {
         //compara nombres de experiencias
         if (sPersona.existsByNombreP(dtopers.getNombreP()) && sPersona.getByNombreP(dtopers.getNombreP()).get().getId() != id)
             return new ResponseEntity(new Mensaje("Esa Persona ya existe!"), HttpStatus.BAD_REQUEST);
-        // no puede estar vacio
+        ///// no puede estar vacio
         if (StringUtils.isBlank(dtopers.getNombreP()))
             return new ResponseEntity(new Mensaje("El nombre es obligatorio!"), HttpStatus.BAD_REQUEST);
         
